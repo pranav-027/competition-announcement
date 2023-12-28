@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Announcement message generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Enter Competition URL</h1>
+    <form action="/result" method="post">
+        <input type="text" name="(competition_url" placeholder="Enter Competition URL" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
