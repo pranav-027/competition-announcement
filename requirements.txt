@@ -5,3 +5,4 @@ datetime
 bs4
 pytz
 beautifulsoup4==4.10.0
+waitress
