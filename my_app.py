@@ -145,7 +145,7 @@ def get_competition_message(competition_url):
         + "\n"
         + str(compLimit)
         + "\n\n"
-        + "*Registration Fee*"
+        + "*Base Registration Fee:*"
         + "\n"
         + "\u20B9 "
         + str(baseFeeInt)
