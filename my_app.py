@@ -91,6 +91,10 @@ def get_competition_message(competition_url):
     # COMPETITOR LIMIT
     compLimit = comp["competitor_limit"]
 
+    # BASE FEE
+    baseFee = comp["base_entry_fee_lowest_denomination"]
+    baseFeeInt = int(baseFee/100)
+
     # REGISTRATION OPENS FROM
     regStartsFrom = datetime.datetime.fromisoformat(comp["registration_open"]).astimezone(pytz.timezone("Asia/Kolkata"))
 
@@ -140,6 +144,11 @@ def get_competition_message(competition_url):
         + "*Competitor Limit:*"
         + "\n"
         + str(compLimit)
+        + "\n\n"
+        + "*Registration Fee*"
+        + "\n"
+        + "\u20B9 "
+        + str(baseFeeInt)
         + "\n\n"
         + "*Registration Starts From:*"
         + "\n"
