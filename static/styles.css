@@ -64,3 +64,23 @@ button:hover {
 button:active {
     background-color: #3e8e41;
 }
+
+@media (max-width: 767px) {
+    form {
+      max-width: 100%;
+    }
+  
+    input[type="text"] {
+      width: calc(100% - 12px);
+    }
+  
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+    }
+  
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+    }
+  }
