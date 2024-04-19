@@ -6,15 +6,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Competition Details</h1>
-    <br>
-    <h3>WhatsApp Message</h3>
-    <pre id="message">{{ message }}</pre>
-    <button onclick="copyToClipboard('message')">Copy to Clipboard</button>
-    <br>
-    <h3>Facebook Message</h3>
-    <pre id="fbMessage">{{ fbMessage }}</pre>
-    <button onclick="copyToClipboard('fbMessage')">Copy to Clipboard</button>
+    <header>
+        <h1>Announcement Messages</h1>
+        <p>Here are the generated announcement messages for your competition.</p>
+    </header>
+
+    <main>
+        <section class="message-section">
+            <h2>WhatsApp Message</h2>
+            <pre id="message">{{ message }}</pre>
+            <button onclick="copyToClipboard('message')">Copy to Clipboard</button>
+        </section>
+        
+        <section class="message-section">
+            <h2>Facebook Message</h2>
+            <pre id="fbMessage">{{ fbMessage }}</pre>
+            <button onclick="copyToClipboard('fbMessage')">Copy to Clipboard</button>
+        </section>
+
+        <a href="/" class="go-back-button">Go Back</a>
+    </main>
     
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

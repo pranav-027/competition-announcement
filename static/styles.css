@@ -1,37 +1,73 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
-h1 {
+header, footer {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
     text-align: center;
 }
 
-form {
-    max-width: 400px;
-    margin: 0 auto;
+header h1, footer p {
+    margin: 0;
+}
+
+a{
+    color: #252525;
+    text-decoration: solid;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    background-color: #fff;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    text-align: center;
 }
 
 input[type="text"] {
-    width: calc(100% - 12px);
-    margin-bottom: 10px;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
 }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 8px;
+button[type="submit"] {
+    padding: 10px 20px;
     border: none;
-    border-radius: 3px;
-    background-color: #4CAF50;
-    color: white;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.message-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    color: #007bff;
 }
 
 pre {
@@ -43,24 +79,39 @@ pre {
     background-color: #f9f9f9;
 }
 
-/* Button styles */
 button {
     padding: 8px 16px;
     font-size: 14px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
-/* Click effect */
 button:active {
-    background-color: #3e8e41;
+    background-color: #004080;
+}
+
+.go-back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+    background-color: #0056b3;
+}
+
+.go-back-button:active {
+    background-color: #004080;
 }
