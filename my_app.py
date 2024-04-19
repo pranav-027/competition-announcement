@@ -18,7 +18,7 @@ eventsDict = {
     "minx": "Megaminx",
     "pyram": "Pyraminx",
     "skewb": "Skewb",
-    "sq1": "Square1",
+    "sq1": "Square-1",
     "444bf": "4x4 BLD",
     "555bf": "5x5 BLD",
     "333mbf": "3x3 MBLD",
