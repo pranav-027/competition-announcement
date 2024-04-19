@@ -1,7 +1,8 @@
 # flask_app/app.py
 
 from flask import Flask, render_template, request
-from my_app import get_competition_message  # Import the function from my_python_app
+from my_app import get_competition_message
+from my_app import get_competition_fb_message  # Import the function from my_python_app
 from waitress import serve
 
 app = Flask(__name__)
@@ -14,8 +15,9 @@ def index():
 def result():
     competition_url = request.form['(competition_url']
     compWhatsAppMessage = get_competition_message(competition_url)  # Use the imported function from my_python_app
+    compFbMessage = get_competition_fb_message(competition_url)
 
-    return render_template('result.html', message=compWhatsAppMessage)
+    return render_template('result.html', message=compWhatsAppMessage, fbMessage=compFbMessage)
 
 if __name__ == '__main__':
     serve(app,host='0.0.0.0',threads=1)
