@@ -41,7 +41,6 @@ def get_competition_message(competition_url):
 
 
     # COMPETITION NAME
-    compName = comp["name"]
     compURL = comp["url"]
 
     # ORGANIZERS
@@ -97,7 +96,6 @@ def get_competition_message(competition_url):
 
     # REGISTRATION OPENS FROM
     regStartsFrom = datetime.datetime.fromisoformat(comp["registration_open"]).astimezone(pytz.timezone("Asia/Kolkata"))
-
     compRegStartsFrom = regStartsFrom.strftime("%a | %B %d, %Y at %I:%M %p")
 
     # CONTACT
@@ -160,3 +158,93 @@ def get_competition_message(competition_url):
         + "\n\n\n"
     )
     return compWhatsAppMessage
+
+def get_competition_fb_message(competition_url):
+
+    api_url = competition_url.replace('/competitions/', '/api/v0/competitions/')
+
+    # takes the json and loads it in comps variable
+    req = requests.get(api_url)
+    comp = json.loads(req.text)
+
+
+    # COMPETITION NAME
+    compName = comp["name"]
+    compURL = comp["url"]
+
+    # DATE
+    startDate = datetime.date.fromisoformat(comp["start_date"])
+    endDate = datetime.date.fromisoformat(comp["end_date"])
+    compDate = ""
+    if startDate == endDate:
+        compDate = startDate.strftime("%B %d, %Y | %A")
+    else:
+            compDate = (
+            startDate.strftime("%B %d")
+            + endDate.strftime("-%d, %Y")
+            + " | "
+            + startDate.strftime("%a")
+            + "-"
+            + endDate.strftime("%a")
+        )
+
+    # VENUE
+    if not comp["venue_details"] == "":
+        compVenueAndDetails = comp["venue_address"] + " | " + comp["venue_details"]
+    else:
+        compVenueAndDetails = comp["venue_address"]
+
+    compVenueLink = generate_google_maps_link(
+            comp["latitude_degrees"], comp["longitude_degrees"]
+        )
+
+    # EVENTS
+    i = 0
+    compEvents = ""
+    for event in comp["event_ids"]:
+        i += 1
+        compEvents += eventsDict[event]
+        if not len(comp["event_ids"]) == i:
+             compEvents += ", "
+
+    # COMPETITOR LIMIT
+    compLimit = comp["competitor_limit"]
+
+    # REGISTRATION OPENS FROM
+
+    regStartsFrom = datetime.datetime.fromisoformat(comp["registration_open"]).astimezone(pytz.timezone("Asia/Kolkata"))
+    compRegStartsFrom = regStartsFrom.strftime("%a | %B %d, %Y at %I:%M %p")
+
+    compFbMessage = (
+        "[Competition Announcement]"
+        + "\n\n"
+        + str(compName)
+        + "\n\n"
+        + "Date:"
+        + "\n"
+        + str(compDate)
+        + "\n\n"
+        + "Venue:"
+        + "\n"
+        + str(compVenueAndDetails)
+        + "\n"
+        + str(compVenueLink)
+        + "\n\n"
+        + "Events:"
+        + "\n"
+        + str(compEvents)
+        + "\n\n"
+        + "Competitor Limit:"
+        + "\n"
+        + str(compLimit)
+        + "\n\n"
+        + "Registration Starts From:"
+        + "\n"
+        + str(compRegStartsFrom)
+        + "\n\n"
+        + "Happy Cubing! 🧩"
+        + "\n\n"
+        + str(compURL)
+        + "\n\n"
+    )
+    return compFbMessage

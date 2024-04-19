@@ -1,5 +1,5 @@
-function copyToClipboard() {
-    var messageText = document.getElementById("message").innerText;
+function copyToClipboard(elementId) {
+    var messageText = document.getElementById(elementId).innerText;
     var tempInput = document.createElement("textarea");
     tempInput.value = messageText;
     document.body.appendChild(tempInput);
