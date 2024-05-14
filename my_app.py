@@ -194,10 +194,6 @@ def get_competition_fb_message(competition_url):
     else:
         compVenueAndDetails = comp["venue_address"]
 
-    compVenueLink = generate_google_maps_link(
-            comp["latitude_degrees"], comp["longitude_degrees"]
-        )
-
     # EVENTS
     i = 0
     compEvents = ""
@@ -227,8 +223,6 @@ def get_competition_fb_message(competition_url):
         + "Venue:"
         + "\n"
         + str(compVenueAndDetails)
-        + "\n"
-        + str(compVenueLink)
         + "\n\n"
         + "Events:"
         + "\n"
