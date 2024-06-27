@@ -85,7 +85,7 @@ button {
     border: none;
     border-radius: 4px;
     background-color: #fcba03;
-    color: white;
+    color: #252525;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
