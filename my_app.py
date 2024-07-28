@@ -3,6 +3,7 @@ import requests
 import datetime
 from bs4 import BeautifulSoup
 import pytz
+from babel.numbers import get_currency_symbol
 
 eventsDict = {
     "333": "3x3",
@@ -77,6 +78,7 @@ def get_competition_message(competition_url):
     comp_venue_link = generate_google_maps_link(comp["latitude_degrees"], comp["longitude_degrees"])
     comp_events = ", ".join([eventsDict[event] for event in comp["event_ids"]])
     comp_limit = comp["competitor_limit"]
+    currency_symbol = get_currency_symbol(comp["currency_code"])
     base_fee_int = int(comp["base_entry_fee_lowest_denomination"] / 100)
     reg_starts_from = datetime.datetime.fromisoformat(comp["registration_open"]).astimezone(pytz.timezone("Asia/Kolkata"))
     comp_reg_starts_from = reg_starts_from.strftime("%a | %B %d, %Y at %I:%M %p")
@@ -90,7 +92,7 @@ def get_competition_message(competition_url):
         f"*Venue:*\n{comp_venue_and_details}\n{comp_venue_link}\n\n"
         f"*Events:*\n{comp_events}\n\n"
         f"*Competitor Limit:*\n{comp_limit}\n\n"
-        f"*Base Registration Fee:*\n₹ {base_fee_int}\n\n"
+        f"*Base Registration Fee:*\n{currency_symbol} {base_fee_int}\n\n"
         f"*Registration Starts From:*\n{comp_reg_starts_from}\n\n"
         f"*Contact:*\n{contact_link}\n\n\n"
     )
